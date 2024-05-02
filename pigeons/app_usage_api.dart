@@ -1,5 +1,13 @@
 import 'package:pigeon/pigeon.dart';
 
+@ConfigurePigeon(PigeonOptions(
+  dartOut: 'lib/app_usage_api.dart',
+  kotlinOptions: KotlinOptions(
+    package: 'dev.dartling.app_usage',
+  ),
+  kotlinOut: 'android/src/main/kotlin/dev/dartling/app_usage/AppUsage.kt',
+  swiftOut: 'ios/Classes/AppUsage.swift',
+))
 enum ResultState { success, error }
 
 class TimeLimitResult {

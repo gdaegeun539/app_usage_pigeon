@@ -14,15 +14,17 @@ public class SwiftAppUsagePlugin: NSObject, FlutterPlugin, AppUsageApi {
         AppUsageApiSetup.setUp(binaryMessenger: messenger, api: api)
     }
 
-    func getPlatformVersion(completion: @escaping (String?) -> Void) {
-        completion("iOS " + UIDevice.current.systemVersion)
+    func getPlatformVersion(completion: @escaping (Result<String?, Error>) -> Void) {
+        let resultString = "iOS " + UIDevice.current.systemVersion
+        completion(.success(resultString))
     }
 
-    func getApps(completion: @escaping ([UsedApp]) -> Void) {
-        completion(usedApps)
+    func getApps(completion: @escaping (Result<[UsedApp], Error>) -> Void) {
+        completion(.success(usedApps))
     }
 
-    func setAppTimeLimit(appId: String, durationInMinutes: Int32, completion: @escaping (TimeLimitResult) -> Void) {
-        completion(TimeLimitResult(state: ResultState.success, message: "Timer of \(durationInMinutes) minutes set for app ID \(appId)"))
+    func setAppTimeLimit(appId: String, durationInMinutes: Int64, completion: @escaping (Result<TimeLimitResult, Error>) -> Void) {
+        let timeLimitResult = TimeLimitResult(state: ResultState.success, message: "Timer of \(durationInMinutes) minutes set for app ID \(appId)")
+        completion(.success(timeLimitResult))
     }
 }

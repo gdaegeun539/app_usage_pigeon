@@ -1,6 +1,6 @@
-flutter pub run pigeon \
+dart run pigeon \
   --input pigeons/app_usage_api.dart \
   --dart_out lib/app_usage_api.dart \
-  --java_package "dev.dartling.app_usage" \
-  --java_out android/src/main/java/dev/dartling/app_usage/AppUsage.java \
-  --experimental_swift_out ios/Classes/AppUsage.swift
+  --kotlin_package "dev.dartling.app_usage" \
+  --kotlin_out android/src/main/kotlin/dev/dartling/app_usage/AppUsage.kt \
+  --swift_out ios/Classes/AppUsage.swift
